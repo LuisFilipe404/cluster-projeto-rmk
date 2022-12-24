@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cluster | PROJETO</title>
+</head>
+<body id="body">
+    <a href="./config.html">Configurações</a>
+
+    <!--Mapa-->
+
+    <div id="map-box">
+
+    </div>
+
+    <!--Gráfico-->
+
+    <div style="width: 800px;" id="chart-box">
+        <canvas id="myChart"></canvas>
+        <form>
+            <input onchange="filterData()" type="month" id="filterMonth">
+            <button type="reset" onclick="resetFilterData()">Resetar filtro</button>
+        </form>
+        <button onclick="resetZoomChart(this)">Resetar Zoom</button>
+    </div>
+    
+    <!--Chart JS module-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!--Hammer JS module-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--Chart JS Adpater date-->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <!--Chart JS zoom plugin-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.0/chartjs-plugin-zoom.min.js" integrity="sha512-B6F98QATBNaDHSE7uANGo5h0mU6fhKCUD+SPAY7KZDxE8QgZw9rewDtNiu3mbbutYDWOKT3SPYD8qDBpG2QnEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--Script da página-->
+    <script src="./script.js"></script>
+</body>
+</html>

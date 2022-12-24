@@ -1,0 +1,8 @@
+.disable__chart {
+    display: none;
+    visibility: hidden;
+}
+
+.mapaCidade {
+    cursor: pointer;
+}
