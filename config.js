@@ -137,7 +137,7 @@ function saveData(file, name, color, cidadesSelecionadas) {
                 label: labels,
                 color: color.value,
                 name: name.value,
-                cidade: cidadesSelecionadas,
+                city: cidadesSelecionadas,
             }; 
             
             // session config

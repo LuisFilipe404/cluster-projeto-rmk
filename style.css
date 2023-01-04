@@ -1,3 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --fontprimaria: 'Roboto', sans-serif;
+    --fontsecundaria: 'Inter', sans-serif;
+    --branco: #fff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+.tooltip {
+    padding: 5px 10px;
+}
+
+.tooltip__city {
+    color: var(--branco);
+    font-family: var(--fontprimaria);
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.tooltip__dataName { 
+    color: var(--branco);
+    font-family: var(--fontsecundaria);
+    text-align: center;
+    font-size: .9rem;
+}
+
 .disable__chart {
     display: none;
     visibility: hidden;
