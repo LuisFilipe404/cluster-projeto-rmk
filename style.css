@@ -17,6 +17,10 @@
     outline: none !important;
 }
 
+.map__container {
+    width: 1000px;
+}
+
 .tooltip {
     padding: 5px 10px;
 }

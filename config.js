@@ -1,12 +1,13 @@
+//Dom Get Elements
 const btnSave = document.getElementById('btnSave');
 const checkboxContainer = document.getElementById('checkbox-list');
 const formbox = document.getElementById('form-box');
 
+// Iniciar sessão no navegador
 var getCitySession = sessionStorage.getItem("city");
 
 
-/// Mapa
-
+// Mapa
 function getInputsMap() {
 
     if (getCitySession === '[]') { // caso todas as cidades ja estejam alocadas
@@ -17,20 +18,20 @@ function getInputsMap() {
         `
     }
 
-    if (typeof getCitySession === 'object') { // salvar a sessao inicial com todas as cidades
+    if (typeof getCitySession === 'object') { // salvar a sessao inicial com todas as cidades na primeira vez que a sessão for iniciada
         
         var cidades = ["Apuí", "Beruri", "Boca do Acre", "Carauari", "Careiro da Várzea", "Itacoatiara", "Itapiranga", "Juruá", "Manacapuru", "Manaquiri", "Maraã", "Pauini", "Santo Antônio do Içá", "Silves", "São Paulo de Olivença", "Tabatinga", "Autazes", "Borba", "Caapiranga", "Coari", "Humaitá", "Iranduba", "Itamarati", "Japurá", "Jutaí", "Manicoré", "Novo Aripuanã", "São Sebastião do Uatumã", "Tefé", "Atalaia do Norte", "Alvarães", "Barcelos", "Lábrea", "São Gabriel da Cachoeira", "Uarini", "Canutama", "Careiro", "Eirunepé", "Ipixuna", "Novo Airão", "Presidente Figueiredo", "Rio Preto da Eva", "Santa Isabel do Rio Negro", "Tapauá", "Amaturá", "Anamã", "Anori", "Barreirinha", "Benjamin Constant", "Boa Vista do Ramos", "Codajás", "Envira", "Fonte Boa", "Manaus", "Maués", "Nhamundá", "Nova Olinda do Norte", "Parintins", "Tonantins", "Urucará", "Urucurituba", "Guajará"];
 
         cidades = cidades.sort(); // ordenar em ordem crescente
 
-        var string = JSON.stringify(cidades);
+        var string = JSON.stringify(cidades); // transformar em string
 
-        sessionStorage.setItem("city", string);
+        sessionStorage.setItem("city", string); // salvar na sessão
         
         getCitySession = sessionStorage.getItem("city"); // atualizar com a nova sessao
     }
 
-    let array = JSON.parse(getCitySession);
+    let array = JSON.parse(getCitySession); // transformar de string para array
 
     let content = ''
 
@@ -46,15 +47,14 @@ function getInputsMap() {
         `;
     };
 
-    checkboxContainer.innerHTML = content;
+    checkboxContainer.innerHTML = content; // atualizar o HTML
 }
 
 getInputsMap();
 
-/// Grafico
-
+// Salvar Gráfico
 btnSave.addEventListener('click', () => {
-
+    // Pegar todos os dados
     const name = document.getElementById('name-ipt');
     const file = document.querySelector('#file-ipt');
     const color = document.getElementById('color-ipt');
@@ -132,6 +132,7 @@ function saveData(file, name, color, cidadesSelecionadas) {
                 notifications.push(data[i].Notifications);
             }
 
+            // objeto das configurações que serão enviadas
             const options = {
                 data: notifications,
                 label: labels,
@@ -141,7 +142,6 @@ function saveData(file, name, color, cidadesSelecionadas) {
             }; 
             
             // session config
-
             const getDataSession = sessionStorage.getItem('clusters');
             
             if (typeof getDataSession == 'object') { // primeira vez          

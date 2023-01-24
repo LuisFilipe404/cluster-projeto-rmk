@@ -13,10 +13,10 @@
     <!--Mapa-->
 
     <div>
-        <div id="map-box"></div>
+        <div class="map__container" id="map-box"></div>
         <div>
-            <button>Dados</button>
-            <button>Setores</button>
+            <button onclick="trocarMapaDados()">Dados</button>
+            <button onclick="trocarMapaRegionais()">Setores</button>
         </div>
     </div>
 
@@ -30,6 +30,8 @@
         </form>
         <button onclick="resetZoomChart(this)">Resetar Zoom</button>
     </div>
+
+    <button onclick="resetData()">Limpar Dados</button>
     
     <!--Chart JS module-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
