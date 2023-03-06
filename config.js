@@ -56,7 +56,7 @@ getInputsMap();
 btnSave.addEventListener('click', () => {
     // Pegar todos os dados
     const name = document.getElementById('name-ipt');
-    const file = document.querySelector('#file-ipt');
+    const file = document.getElementById('file-ipt');
     const color = document.getElementById('color-ipt');
     const cidades = document.querySelectorAll('.checkbox__cidades');
 
@@ -107,7 +107,7 @@ btnSave.addEventListener('click', () => {
 
     sessionStorage.setItem('city', string);
 
-    saveData(file, name, color, cidadesSelecionadas)
+    saveData(name, color, cidadesSelecionadas)
 })
 
 function validacao(existeCidade, existeNome, existeArquivo, existeCor) {
@@ -117,57 +117,70 @@ function validacao(existeCidade, existeNome, existeArquivo, existeCor) {
     } else return 1;
 }
 
-function saveData(file, name, color, cidadesSelecionadas) {
+function saveData(name, color, cidadesSelecionadas) {
 
-    const filename = file.files[0].name; 
+    const csv = d3.dsvFormat(';');
 
-    d3.dsv(';', filename) // ler e manipular csv
-        .then((data) => {
+    const inputFile = d3.select('#file-ipt').node();
 
-            const labels = []; // eixo x
-            const notifications = []; // eixo y
+    const file = inputFile.files[0];
 
-            for (let i = 0; i < data.length; i++) { // ciclo pra armazenar os dados nos respectivos arrays
-                labels.push(data[i].Date);
-                notifications.push(data[i].Notifications);
-            }
+    const reader = new FileReader();
 
-            // objeto das configurações que serão enviadas
-            const options = {
-                data: notifications,
-                label: labels,
-                color: color.value,
-                name: name.value,
-                city: cidadesSelecionadas,
-            }; 
+    reader.onloadend = () => {
+        const csvData = reader.result;
+        
+        const data = csv.parse(csvData);
+
+        const labels = []; // eixo x
+        const notifications = []; // eixo y
+
+        for (let i = 0; i < data.length; i++) { // ciclo pra armazenar os dados nos respectivos arrays
+            labels.push(data[i].Date);
+            notifications.push(data[i].Notifications);
+        }
+
+        // objeto das configurações que serão enviadas
+
+        const options = {
+            data: notifications,
+            label: labels,
+            color: color.value,
+            name: name.value,
+            city: cidadesSelecionadas,
+        }; 
+        
+        // session config
+        const getDataSession = sessionStorage.getItem('clusters');
+        
+        if (typeof getDataSession == 'object') { // primeira vez          
+
+            var clusters = []; // array inicial
+
+            clusters.push(options); 
+
+            var string = JSON.stringify(clusters);
+
+            sessionStorage.setItem('clusters', string); 
+
+        } else { 
+
+            var array = JSON.parse(getDataSession);
             
-            // session config
-            const getDataSession = sessionStorage.getItem('clusters');
-            
-            if (typeof getDataSession == 'object') { // primeira vez          
+            array.push(options);
 
-                var clusters = []; // array inicial
+            var string = JSON.stringify(array); // dado convertido em string
 
-                clusters.push(options); 
-
-                var string = JSON.stringify(clusters);
-
-                sessionStorage.setItem('clusters', string); 
-
-            } else { 
-
-                var array = JSON.parse(getDataSession);
-                
-                array.push(options);
-
-                var string = JSON.stringify(array); // dado convertido em string
-
-                sessionStorage.setItem('clusters', string);
-            }
-        })
-
+            sessionStorage.setItem('clusters', string);
+        }
+        
         alert(`${name.value} salvo com sucesso`);
 
         window.location.href = "./index.html";
+
+    }
+
+    reader.readAsText(file);
+            
 }
 
