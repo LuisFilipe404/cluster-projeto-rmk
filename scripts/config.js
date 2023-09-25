@@ -2,10 +2,11 @@
 const btnSave = document.getElementById('btnSave');
 const checkboxContainer = document.getElementById('checkbox-list');
 const formbox = document.getElementById('form-box');
+const importedFile = document.getElementById('imported-file');
+const fileIpt = document.getElementById('file-ipt');
 
 // Iniciar sessão no navegador
 var getCitySession = sessionStorage.getItem("city");
-
 
 // Mapa
 function getInputsMap() {
@@ -140,6 +141,25 @@ function saveData(name, color, cidadesSelecionadas) {
             notifications.push(data[i].Notifications);
         }
 
+        // pegar o maior valor do array
+
+        const maiorValor = Math.max(...notifications);
+        
+        const getMaiorValor = sessionStorage.getItem('maiorValor');
+
+        if (typeof getMaiorValor === 'object') {
+            const maioresValores = [];
+            maioresValores.push(maiorValor);
+            
+            const parseMaioresValores = JSON.stringify(maioresValores);
+
+            sessionStorage.setItem('maiorValor', parseMaioresValores);
+        } else {
+            const getMaioresValores = JSON.parse(sessionStorage.getItem("maiorValor")); 
+            getMaioresValores.push(maiorValor);
+            sessionStorage.setItem("maiorValor", JSON.stringify(getMaioresValores))
+        }
+
         // objeto das configurações que serão enviadas
 
         const options = {
@@ -176,7 +196,7 @@ function saveData(name, color, cidadesSelecionadas) {
         
         alert(`${name.value} salvo com sucesso`);
 
-        window.location.href = "./index.html";
+        window.location.href = "../pages/index.html";
 
     }
 

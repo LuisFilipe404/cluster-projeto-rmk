@@ -1,0 +1,128 @@
+.main__config {
+    margin: 0 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.form__data {
+    padding: 50px 40px;
+    background-color: var(--branco);
+    border-radius: 10px;
+    width: 50%;
+}
+
+.form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.form__group > label {
+    font-family: "inter", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.label {
+    font-family: "inter", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 1px solid black;
+    transition: border .3s;
+}
+
+input[type="text"]:focus {
+    border: 1px solid var(--cor-principal);
+    transition: border .3s;
+}
+
+input[type="file"] {
+    visibility: hidden;
+    display: none;
+}   
+
+.file__input {
+    width: 230px;
+    padding: 12px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: var(--fontsecundaria);
+    font-weight: bold;
+    transition: all .1s;
+    text-align: center;
+    border: 2px solid transparent;
+    opacity: 100%;
+    background-color: var(--cor-principal);
+    color: var(--branco);
+}
+
+.file__input:hover {
+    background-color: var(--hover-botao);
+    color: var(--branco);
+    transition: all .1s;
+}
+
+input[type="color"] {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+input[type="color"]:focus {
+    border: 1px solid var(--cor-principal);
+}
+
+input[type="color"]::-webkit-color-swatch {
+    height: 15px;
+    border-radius: 20px;
+    border: none;
+}
+
+#checkbox-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 10px;
+    margin-bottom: 70px;
+}
+  
+#checkbox-list > div {
+    width: calc(50% - 10px);
+    display: flex;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 500px) {
+    #checkbox-list > div {
+        width: 100%;    
+    }
+}
+  
+#checkbox-list > div label {
+    font-size: 1.1rem;
+    font-family: sans-serif;
+    font-weight: 300;
+}
+
+#checkbox-list > div input {
+    width: 16px;
+    height: 16px;
+}

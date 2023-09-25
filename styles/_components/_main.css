@@ -1,0 +1,108 @@
+.main {
+    display: grid;
+    grid-template-columns: 49% 49%;
+    column-gap: 34px;
+    margin: 0 30px 40px;
+    
+}
+
+.main__title {
+    font-size: 2em;
+    color: var(--cor-principal);
+    font-family: var(--fontprimaria);
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.mapa__section {
+    padding: 50px 40px;
+    background-color: var(--branco);
+    border-radius: 11px;
+}
+
+.chart__section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Not Found */
+
+.data-not-found {
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 25px 1px rgba(0, 0, 0, 0.25);
+    padding: 25px 24px;
+    height: 65vh;
+    background-image: url(../../assets/waveeffect.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-y: bottom;
+    border-radius: 11px;
+}
+
+.icon__not-found {
+    height: 140px;
+}
+
+.title__not-found {
+    font-size: 1.75em;
+    color: var(--cor-principal);
+    font-weight: bold;
+    font-family: var(--fontprimaria);
+    margin-top: 30px;
+    text-align: center;
+}
+
+.text__not-found {
+    font-size: 1.25em;
+    color: var(--cor-secundaria);
+    font-weight: 400;
+    text-align: center;
+    font-family: var(--fontsecundaria);
+    width: calc(100% - 20px);
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.btn__not-found {
+    color: var(--branco);
+    display: inline;
+    background-color: var(--cor-principal);    
+    padding: 15px 40px;
+    border-radius: 8px;
+    font-size: 1.25em;
+    font-weight: 700;
+    text-align: center;
+    font-family: var(--fontsecundaria);
+    width: max-content;
+    align-self: center;
+    transition: all .1s;
+}
+
+.btn__not-found:hover {
+    background-color: var(--hover-botao);
+    color: var(--branco);
+    transition: all .1s;
+}
+
+/* Chart */
+
+.chart__container {
+    padding: 50px 20px;
+    box-shadow: 0px 0px 25px 1px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: 90%;
+}
+
+.chart__filters {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding: 0 20px;
+}

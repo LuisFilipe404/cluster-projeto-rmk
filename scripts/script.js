@@ -31,6 +31,12 @@ if (getDataSession !== null && getDataSession !== 'null') { // if para apenas a 
 
     // Mapa
 
+    function criarHeatMap() {
+        const pathDasCidades = document.querySelectorAll('.mapaCidade');
+
+        
+    }
+
     function criarMapa () {
     
         const pathDasCidades = document.querySelectorAll('.mapaCidade');
@@ -51,8 +57,6 @@ if (getDataSession !== null && getDataSession !== 'null') { // if para apenas a 
     }
 
     function criarToolTips() {
-
-        console.log("cheguei")
         
         for (let i = 0; i < array.length; i++) {
             for (let j = 0; j < array[i].city.length; j++) {
@@ -76,8 +80,6 @@ if (getDataSession !== null && getDataSession !== 'null') { // if para apenas a 
             }
         }
 
-        console.log("cheguei 2")
-        
     }
 
     function capitalizar(nome) {
@@ -124,6 +126,7 @@ if (getDataSession !== null && getDataSession !== 'null') { // if para apenas a 
                 label: array[i].name,
                 data: array[i].data,
                 borderWidth: mock.chartConfig.datasetsConfig.borderWidth,
+                backgroundColor: array[i].color,
                 borderColor: array[i].color,
                 tension: mock.chartConfig.datasetsConfig.tension,
                 pointBorderWidth: 0,
@@ -150,6 +153,8 @@ if (getDataSession !== null && getDataSession !== 'null') { // if para apenas a 
     const ctx = document.getElementById('myChart');
 
     const options = {
+        responsive: true,
+        aspectRatio: 2,
         plugins: {
             zoom: {
                 zoom: {
@@ -187,8 +192,11 @@ if (getDataSession !== null && getDataSession !== 'null') { // if para apenas a 
                 }
             },
             y: {
-            beginAtZero: true
-            }
+                max: 10000,
+                ticks: {
+                    beginAtZero: true
+                }
+            },
         }
     }
 
@@ -237,9 +245,11 @@ if (getDataSession !== null && getDataSession !== 'null') { // if para apenas a 
     const chartbox = document.getElementById('chart-box');
 
     chartbox.innerHTML = `
-    <div>
-        <h2>Nenhum dado Inserido</h2>
-        <p><a href="./config.html">Clique aqui</a> para inserir um novo dado</p>
+    <div class="data-not-found">
+        <img class="icon__not-found" src="../assets/sem-dados 2.svg"/>
+        <h2 class="title__not-found">Nenhum dado Inserido</h2>
+        <p class="text__not-found">Insira dados para plotar o gráfico interativo</p>
+        <a class="btn__not-found" href="../pages/config.html">INSERIR DADOS</a>
     </div>
     `;
 
@@ -250,7 +260,7 @@ function mostrarMapa (opcao) {
     if (opcao == 0) { 
         return `
             <div>
-                <h1>Clusters Amazonas</h1>
+                <h1 class="main__title">Clusters Amazonas</h1>
                 <div>
                     <div>
                         <svg
@@ -587,7 +597,7 @@ function mostrarMapa (opcao) {
     } else {
         return `
             <div>
-                <h1>Clusters Amazonas</h1>
+                <h1 class="main__title">Clusters Amazonas</h1>
                 <div>
                     <div>
                         <svg
@@ -1046,6 +1056,11 @@ function trocarMapaDados() {
 function trocarMapaRegionais() {
     mapbox.innerHTML = mostrarMapa(1);
     criarMapa();
+}
+
+function trocarMapaCalor() {
+    mapbox.innerHTML = mostrarMapa(0);
+    criarHeatMap();
 }
 
 function resetData() {

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Cluster | PROJETO</title>
+</head>
+<body id="body">
+
+    <!-- Header -->
+
+    <header class="header">
+        <a class="header__item header__item-active" href="./index.html">Dados</a>
+        <a class="header__item" href="./config.html">Configurações</a>
+    </header>
+
+    <main class="main">
+        <!--Mapa-->
+        <section class="mapa__section">
+            <div class="map__container" id="map-box"></div>
+            <div class="btn__section">
+                <button class="btn btn__active" id="btn-dados" onclick="trocarMapaDados()">DADOS</button>
+                <button class="btn" id="btn-setores" onclick="trocarMapaRegionais()">REGIONAIS DE SAÚDE</button>
+                <button class="btn" id="btn-heat-map">HEAT MAP</button>
+            </div>
+        </section>
+        <!--Gráfico-->
+        <section class="mapa__section chart__section" id="chart-box">
+            <div class="chart__container">
+                <canvas id="myChart"></canvas>
+                <div class="chart__filters">
+                    <form class="chart__filter ">
+                        <input onchange="filterData()" type="month" id="filterMonth">
+                        <button type="reset" id="reset-filter" onclick="resetFilterData()"><img src="../assets/refresh.svg" alt="refresh"></button>
+                    </form>
+                    <button class="btn btn__active" onclick="resetZoomChart(this)">Resetar Zoom</button>
+                </div>
+                <div style="margin-top: 70px; display: flex; justify-content: center; padding: 0 20px;"> 
+                    <button class="btn__delete" onclick="resetData()" title="Deletar dados"><img src="../assets/lixeira.svg"/></button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!--Chart JS module-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!--Hammer JS module-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--Chart JS Adpater date-->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <!--Chart JS zoom plugin-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.0/chartjs-plugin-zoom.min.js" integrity="sha512-B6F98QATBNaDHSE7uANGo5h0mU6fhKCUD+SPAY7KZDxE8QgZw9rewDtNiu3mbbutYDWOKT3SPYD8qDBpG2QnEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--Tippy Js-->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <!--Script da página-->
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/botoes.js"></script>
+</body>
+</html>

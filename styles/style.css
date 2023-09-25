@@ -1,0 +1,55 @@
+/* Css Geral */
+
+@import './resets.css';
+@import './_components/_header.css';
+@import './_components/_main.css';
+@import './_components/_botao.css';
+@import './_components/_chart.css';
+@import './_components/_form.css';
+
+:root {
+    --fontprimaria: 'Inter', sans-serif;
+    --fontsecundaria: 'Roboto', sans-serif;
+    --branco: #fff;
+    --cor-de-fundo: #F6F6F6;
+    --cor-principal: #76B07B;
+    --cor-secundaria: #323232;
+    --cor-terciaria: #B85C5C;
+    --hover-botao-delete: #834242;
+    --hover-botao: #46714A;
+}
+
+body {
+    background-color: var(--cor-de-fundo);
+}
+
+
+/* Configurações de plot css*/
+
+
+.tooltip {
+    padding: 5px 10px;
+}
+
+.tooltip__city {
+    color: var(--branco);
+    font-family: var(--fontprimaria);
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.tooltip__dataName { 
+    color: var(--branco);
+    font-family: var(--fontsecundaria);
+    text-align: center;
+    font-size: .9rem;
+}
+
+.disable__chart {
+    display: none;
+    visibility: hidden;
+}
+
+.mapaCidade {
+    cursor: pointer;
+}

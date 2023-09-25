@@ -1,0 +1,9 @@
+#myChart {
+    height: 320px !important;
+}
+
+.chart__filter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}

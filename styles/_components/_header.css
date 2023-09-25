@@ -1,0 +1,23 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    background-color: var(--branco);
+    padding: 45px 0px;
+    margin: 40px 30px 60px;
+    filter: drop-shadow(4px 9px 19px rgba(149, 148, 148, 0.14));
+    border-radius: 10px;
+}
+
+.header__item {
+    font-size: 1.3em;
+    font-family: var(--fontprimaria);
+    opacity: 40%;
+    font-weight: 600;
+}
+
+.header__item-active, .header__item:hover {
+    color: var(--cor-principal);
+    opacity: 100;
+}
